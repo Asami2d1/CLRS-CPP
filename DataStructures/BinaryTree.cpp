@@ -5,6 +5,12 @@
 namespace CLRS
 {
 	template<typename DataType>
+	TreeNode<DataType>::TreeNode()
+	{
+		this->left = nullptr;
+		this->right = nullptr;
+	}
+	template<typename DataType>
 	inline TreeNode<DataType>::TreeNode(DataType da)
 	{
 		this->data = da;
@@ -27,7 +33,7 @@ namespace CLRS
 		case Preorder:
 			if (x != nullptr)
 			{
-				std::cout << x->GetData();
+				std::cout << x->GetData() << " ";
 				TreeWalk(x->left, order);
 				TreeWalk(x->right, order);
 			}
@@ -36,7 +42,7 @@ namespace CLRS
 			if (x != nullptr)
 			{
 				TreeWalk(x->left, order);
-				std::cout << x->GetData();
+				std::cout << x->GetData() << " ";
 				TreeWalk(x->right, order);
 			}
 			break;
@@ -45,7 +51,7 @@ namespace CLRS
 			{
 				TreeWalk(x->left, order);
 				TreeWalk(x->right, order);
-				std::cout << x->GetData();
+				std::cout << x->GetData() << " ";
 			}
 			break;
 		}

@@ -3,6 +3,8 @@
 #define __BINARYTREE_H__
 namespace CLRS
 {
+	enum WALK_ORDER { Preorder = 0, Inorder, Postorder };
+
 	template<typename DataType>
 	class TreeNode
 	{
@@ -10,23 +12,23 @@ namespace CLRS
 		DataType data;
 	public:
 		TreeNode *left, *right, *parent;
+		TreeNode();
 		TreeNode(DataType da);
 		virtual ~TreeNode() = default;
 		DataType GetData() { return this->data; }
-		void ChangeData(DataType da) { this->data = da; }
+		void SetData(DataType da) { this->data = da; }
 	};
 	
 	template<typename DataType>
 	class BinaryTree
 	{
 	public:
-		//BinaryTree();
+		BinaryTree() = default;
 		BinaryTree(TreeNode<DataType> *rootNode);
 		~BinaryTree() = default;
-		enum WALK_ORDER { Preorder = 0, Inorder, Postorder };
 		void TreeWalk(TreeNode<DataType> *x, WALK_ORDER order = Inorder);
 
-	private:
+	protected:
 		TreeNode<DataType> *root;
 	};
 
